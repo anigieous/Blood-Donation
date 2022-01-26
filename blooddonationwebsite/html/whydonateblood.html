@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Who Can Donate Blood</title>
+    <link rel="stylesheet" href="../css/donation.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="donation.html" class="navbar-brand">
+            <img src="../data/blood.png" height="50" alt="CoolBrand">
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <h4 class="nav-item">Blood Bank</h4>
+
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a href="#" class="nav-item nav-link">BLOOD DETAILS</a>
+                <a href="#" class="nav-item nav-link">LOGIN IN</a>
+                <a href="#" class="nav-item nav-link">SIGN UP</a>
+                <a href="#" class="nav-item nav-link text-danger">POST A REQUEST</a>
+            </div>
+        </div>
+    </nav>
+    <nav>
+        <div class="d-flex justify-content-around bg-dark">
+            <div>
+                <a href="register.html" class="nav-item nav-link text-light">REGISTER</a>
+            </div>
+            <div>
+                <a href="whydonateblood.html" class="nav-item nav-link text-light">WHY TO DONATE ?</a>
+            </div>
+            <div>
+                <a href="whocandonateblood.html" class="nav-item nav-link text-light">WHO CAN DONATE BLOOD ?</a>
+            </div>
+            <div>
+                <a href="https://www.oneblood.org/media/blog/" class="nav-item nav-link text-light">BLOGS</a>
+            </div>
+            <div>
+                <a href="contactus.html" class="nav-item nav-link text-light">CONTACT US</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2 class="mb-5">Why To Donate Blood</h2>
+
+        <button class="accordion">Why Donate Blood?</button>
+        <div class="panel">
+            <p><B>Blood is the most precious gift that anyone can give to another person — the gift of life. A decision
+                    to donate your blood can save a life, or even several if your blood is separated into its components
+                    — red cells, platelets and plasma — which can be used individually for patients with specific
+                    conditions.
+                    For many patients, blood donors are their lifeline. One unit of blood can save three lives!
+                    There are many reasons patients need blood. A common misunderstanding about blood usage is that
+                    accident victims are the patients who use the most blood. Actually, people needing the most
+                    blood include those:
+                    <ul>
+                        <li>Have Being treated for cancer.</li>
+                        <li>Undergoing orthopedic surgeries.</li>
+                        <li>Undergoing cardiovascular surgeries.</li>
+                        <li>HaveBeing treated for inherited blood disorders.</li><br>
+                    </ul>
+            </p>
+        </div>
+
+        <button class="accordion">Benefits</button>
+        <div class="panel">
+            <p>Donating blood has benefits for your emotional and physical health.</p>
+            <p>Helping others can:</p>
+            <ul>
+                <li>Reduce stress </li>
+                <li>Improve your emotional well-being</li>
+                <li>Benefit your physical health.</li>
+                <li>Help get rid of negative feelings.</li>
+                <li>Provide a sense of belonging and reduce isolation</li>
+            </ul>
+        </div>
+
+        <button class="accordion" data-toggle="modal" data-target="#myModal">Who's Hero ?</button>
+        <div class="panel">
+        </div>
+    </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    You Can Be A Hero !! Donate Blood !!
+                </div>
+                <div class="modal-body">
+                    <img class="image-fluid ml-4" src="../data/heroblood.jpg" style="height: 300px; width: 400px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
