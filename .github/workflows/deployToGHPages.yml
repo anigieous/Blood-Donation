@@ -4,9 +4,7 @@ name: Deploy static content to Pages
 on:
   push:
     branches:
-      - main
-    paths: 
-      - 'uie-demo/**'   
+      - main  
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
@@ -41,3 +39,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
+
+      - name: Update repository description
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const url = "${{ steps.deployment.outputs.page_url }}";
+            const repo = context.repo;
+            github.repos.update({
+              owner: repo.owner,
+              repo: repo.repo,
+              description: `Deployed at: ${url}`
+            });
