@@ -6,50 +6,15 @@ on:
       - main  
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   deploy:
     environment:
       name: github-pages
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        run: git clone https://github.com/${{ github.repository }} .
-
-      - name: Setup Pages
-        run: echo "Setting up Pages..."
-
-      - name: Upload artifact
-        run: |
-          tar --exclude='./.git' -czvf pages-artifact.tar.gz .
-          echo "Artifact uploaded."
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        run: |
-          git config --global user.email "akak3016@gmail.com"
-          git config --global user.name "Akash Kumar"
-          git config --global http.https://github.com/.extraheader "AUTHORIZATION: bearer ${{ secrets.AKASH_TOKEN }}"
-          git checkout --orphan gh-pages
-          git rm -rf .
-          tar -xzvf pages-artifact.tar.gz
-          git add .
-          git commit -m "Deploy to GitHub Pages"
-          git push origin gh-pages
-          echo "Deployed to GitHub Pages."
-
-      - name: Update repository description
-        env:
-          GH_TOKEN: ${{ secrets.AKASH_TOKEN }}
-        run: |
-          curl -X PATCH -H "Authorization: token $GH_TOKEN" \
-            -d '{"homepage":"'$(echo ${{ steps.deployment.outputs.page_url }})'"}' \
-            https://api.github.com/repos/${{ github.repository }}
+      - name: Deploy to GH Pages
+        uses: anigieous/Deploy-Static-Website-to-GH-PAges@main
+        with: 
+          repo_name: ${{ github.repository }}
+          token: ${{ secrets.AKASH_TOKEN }}
+      
