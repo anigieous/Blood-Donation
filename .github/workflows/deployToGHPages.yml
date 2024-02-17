@@ -37,6 +37,7 @@ jobs:
         run: |
           git config --global user.email "akak3016@gmail.com"
           git config --global user.name "Akash Kumar"
+          git config --global http.https://github.com/.extraheader "AUTHORIZATION: bearer ${{ secrets.AKASh_TOKEN }}"
           git checkout --orphan gh-pages
           git rm -rf .
           tar -xzvf pages-artifact.tar.gz
