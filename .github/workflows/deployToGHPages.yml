@@ -1,4 +1,3 @@
-# Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
@@ -7,7 +6,6 @@ on:
       - main  
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -21,34 +19,34 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        run: git clone https://github.com/${{ github.repository }} .
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        run: echo "Setting up Pages..."
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # Uploading entire folder
-          path: '.'
+        run: |
+          tar -czvf pages-artifact.tar.gz .
+          echo "Artifact uploaded."
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        run: |
+          git checkout --orphan gh-pages
+          git rm -rf .
+          tar -xzvf pages-artifact.tar.gz
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages
+          echo "Deployed to GitHub Pages."
 
       - name: Update repository description
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{secrets.AKASH_TOKEN}}
-          script: |
-            const url = "${{ steps.deployment.outputs.page_url }}";
-            const repo = context.repo;
-            github.rest.repos.update({
-              owner: repo.owner,
-              repo: repo.repo,
-              homepage: `${url}`
-            });
+        env:
+          GH_TOKEN: ${{ secrets.AKASH_TOKEN }}
+        run: |
+          curl -X PATCH -H "Authorization: token $GH_TOKEN" \
+            -d '{"homepage":"'$(echo ${{ steps.deployment.outputs.page_url }})'"}' \
+            https://api.github.com/repos/${{ github.repository }}
