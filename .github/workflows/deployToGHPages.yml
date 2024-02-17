@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GH Pages
-        uses: anigieous/Deploy-Static-Website-to-GH-PAges@main
+        uses: anigieous/Deploy-Static-Website-to-GH-PAges/static@main
         with: 
           repo_name: ${{ github.repository }}
           token: ${{ secrets.AKASH_TOKEN }}
