@@ -47,7 +47,7 @@ jobs:
           script: |
             const url = "${{ steps.deployment.outputs.page_url }}";
             const repo = context.repo;
-            github.repos.update({
+            github.rest.repos.update({
               owner: repo.owner,
               repo: repo.repo,
               description: `Deployed at: ${url}`
