@@ -50,5 +50,5 @@ jobs:
             github.rest.repos.update({
               owner: repo.owner,
               repo: repo.repo,
-              description: `Deployed at: ${url}`
+              Website: ${url}
             });
