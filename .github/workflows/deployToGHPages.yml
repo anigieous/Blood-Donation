@@ -22,5 +22,5 @@ jobs:
         uses: anigieous/Deploy-Static-Website-to-GH-PAges/static@main
         with: 
           repo_name: ${{ github.repository }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.AKASH_TOKEN }}
       
