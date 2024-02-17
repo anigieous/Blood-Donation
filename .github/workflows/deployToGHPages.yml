@@ -43,7 +43,7 @@ jobs:
       - name: Update repository description
         uses: actions/github-script@v5
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{secrets.AKASH_TOKEN}}
           script: |
             const url = "${{ steps.deployment.outputs.page_url }}";
             const repo = context.repo;
