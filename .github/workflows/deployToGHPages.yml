@@ -35,6 +35,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         run: |
+          git config --global user.email "akak3016@gmail.com"
+          git config --global user.name "Akash Kumar"
           git checkout --orphan gh-pages
           git rm -rf .
           tar -xzvf pages-artifact.tar.gz
