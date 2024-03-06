@@ -21,3 +21,5 @@ jobs:
           base: 'main'
           owner: 'anigieous'
           repo: 'Blood-Donation'
+          label: 'target-main'
+          draft: true
