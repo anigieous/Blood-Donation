@@ -1,0 +1,23 @@
+name: Trigger PR Creation
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        uses: anigieous/Pull-Request-Automation/Create@main
+        with:
+          token: ${{ secrets.AKASH_TOKEN }}
+          title: 'testing 1'
+          body: 'This is a new pull request.'
+          head: ${{ github.ref }}
+          base: 'main'
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.repository }}
