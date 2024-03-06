@@ -1,0 +1,16 @@
+name: Use reusable workflow
+
+on:
+  push:
+
+jobs:
+  update-pr:
+    uses: org/repo/.github/workflows/your_workflow_file.yaml@main
+    with:
+      token: ${{ secrets.GITHUB_TOKEN }}
+      title: 'New Title'
+      body: 'Updated PR body'
+      owner: 'anigieous'
+      repo: 'Blood-Donation'
+      pull_number: '2'
+      label: 'bug'
