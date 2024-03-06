@@ -1,11 +1,11 @@
-name: Trigger PR Creation
+name: Merge PR
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  create_pr:
+  merge_pr:
     runs-on: ubuntu-latest
     steps:
       - name: Auto Merge PRs
