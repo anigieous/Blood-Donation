@@ -15,9 +15,9 @@ jobs:
         uses: anigieous/Pull-Request-Automation/Update@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Title'
-          body: 'PR body'
+          title: 'Title1'
+          body: 'PR body1'
           owner: 'anigieous'
           repo: 'Blood-Donation'
           pull_number: '2'
-          label: 'target-test1, target-test2'
+          label: 'target-test1'
