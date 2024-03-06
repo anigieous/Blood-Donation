@@ -22,4 +22,4 @@ jobs:
           owner: 'anigieous'
           repo: 'Blood-Donation'
           label: 'target-main'
-          draft: true
+          draft: 'true'
