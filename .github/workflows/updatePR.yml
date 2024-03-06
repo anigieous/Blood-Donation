@@ -1,0 +1,22 @@
+name: Trigger PR Update
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  update_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        uses: anigieous/Pull-Request-Automation/Update@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: 'Title1'
+          body: 'PR body1'
+          owner: 'anigieous'
+          repo: 'Blood-Donation'
+          pull_number: '2'
