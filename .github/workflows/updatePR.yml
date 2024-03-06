@@ -20,4 +20,3 @@ jobs:
           owner: 'anigieous'
           repo: 'Blood-Donation'
           pull_number: '2'
-          label: 'target-test1'
