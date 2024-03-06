@@ -1,0 +1,19 @@
+name: Trigger PR Creation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  create_pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Merge PRs
+        uses: anigieous/Pull-Request-Automation/Merge@main
+        with:
+          owner: ${{ github.event.pull_request.user.login }}
+          repoName: ${{ github.event.repository.name }}
+          prID: ${{ github.event.pull_request.number }}
+          prTitle: ${{ github.event.pull_request.title }}
+          prBody: ${{ github.event.pull_request.body }}
+          GITHUB_TOKEN: ${{ secrets.AKASH_TOKEN }}
